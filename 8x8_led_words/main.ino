@@ -1,0 +1,32 @@
+#include "port.h"
+
+void setup() {
+  init_port();
+
+    char col_mat[4][8] = {
+                         {0xFF,0x80,0x80,0x80,0xFF,0x80,0x80,0xFF}, //  E
+                         {0xFF,0x80,0x80,0x80,0x80,0x80,0x80,0xFF}, //  C
+                         {0xFF,0x80,0x80,0x80,0xFF,0x80,0x80,0xFF}, //  E
+                         {0x81,0xC1,0xA1,0x91,0x89,0x85,0x83,0x81}, //  N
+                        };
+                        
+    char row_mat[8] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80};
+
+    while(1){
+      for(char i=0;i<4;i++){
+        for(int r=0;r<10;r++){
+          for(char j=0;j<8;j++){
+            outcol(col_mat[i][j]);
+            outrow(~(row_mat[j]));
+            delay1();
+          }
+        }
+        outcol(0x00);
+      delay2();
+    }
+    }
+}
+void loop() {
+}
+
+
